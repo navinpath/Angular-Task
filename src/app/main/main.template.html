@@ -1,0 +1,83 @@
+<div class="container">
+	<div class="row">
+		<div class="col-xs-12">
+			<h2 style="margin-bottom: 0">What is AngularJS Dropdown Multiselect?</h2>
+			This directive uses Bootstrap's Dropdown with the power of AngularJS directives and binding. Bootstrap and AngularJS are the only dependencies.
+			<br />
+			<br />In this page you can see basic and advanced usage examples.
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-xs-12">
+			<h2 style="margin-bottom: 0">Download</h2>
+			There are several options to do that:
+			<ol>
+				<li>Using bower: `bower install angularjs-dropdown-multiselect`</li>
+				<li>Using npm: `npm install angularjs-dropdown-multiselect`</li>
+				<li>
+					Download the .zip file from <a href="https://github.com/dotansimha/angularjs-dropdown-multiselect/zipball/master">here</a>
+				</li>
+			</ol>
+      This is documentation for the currently still in beta v2.0.0, the documentation for v1 can be found here:
+      <a ui-sref="v1" ui-sref-active="active">V1 docs</a>
+		</div>
+	</div>
+	<uib-accordion close-others="true">
+		<div uib-accordion-group heading="test Settings Example" is-open="true" style="height: 500px"
+         ng-if="testing">
+			<div class="row">
+				<div class="col-xs-12">
+					test
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-xs-12 col-sm-6">
+					<h3>Demo</h3>
+					<div class="well">
+						<div>
+							<div ng-dropdown-multiselect options="testdata" selected-model="testmodel" extra-settings="testsettings" events="testevents"></div>
+						</div>
+					</div>
+				</div>
+				<div class="col-xs-12 col-sm-6">
+					<h3>The model:</h3>
+					<pre>{{testmodel|json}}</pre>
+				</div>
+			</div>
+		</div>
+		<div uib-accordion-group heading="Basic Usage Example" is-open="true">
+			<div class="row">
+				<div class="col-xs-12 col-sm-6">
+					<h3>Demo</h3>
+					<div class="well">
+						<div>
+							<div ng-dropdown-multiselect="" options="example1data" selected-model="example1model"></div>
+						</div>
+					</div>
+				</div>
+				<div class="col-xs-12 col-sm-6">
+					<h3>The model:</h3>
+					<pre>{{example1model|json}}</pre>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-12">
+					<h3>Code</h3>
+					<div hljs>
+// HTML
+<div ng-dropdown-multiselect="" options="example1data" selected-model="example1model"></div>
+
+// JavaScript $scope.example1model = [];
+$scope.example1data = [
+  {id: 1, label: "David"},
+  {id: 2, label: "Jhon"},
+  {id: 3, label: "Danny"}
+];
+					</div>
+				</div>
+			</div>
+		</div>
+		
+	</uib-accordion>
+
+</div>
