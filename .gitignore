@@ -1,20 +1,52 @@
-# generic (system) files/extensions we don't want
-*.seed
-*.log
-*.csv
-*.dat
-*.out
-*.pid
-*.gz
-.idea/*
-*.DS_Store
-lib-cov
-pids
-logs
-results
+# See http://help.github.com/ignore-files/ for more about ignoring files.
 
-node_modules
+# compiled output
+/dist
+/dist-lib
+/tmp
+/out-tsc
+dist-lib.tgz
 
-#Actually, need to track these for site to run on Github Pages..
-/bower_components
-.tmp/
+# dependencies
+/node_modules
+
+# IDEs and editors
+/.idea
+.project
+.classpath
+.c9/
+*.launch
+.settings/
+*.sublime-workspace
+
+# IDE - VSCode
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+.vscode
+
+# misc
+/.sass-cache
+/connect.lock
+/coverage
+/libpeerconnection.log
+npm-debug.log
+testem.log
+/typings
+yarn-error.log
+
+# e2e
+/e2e/*.js
+/e2e/*.map
+
+# System Files
+.DS_Store
+Thumbs.db
+package-lock.json
+settings.json
+
+
+TODO.md
+ng-multiselect-dropdown - Copy

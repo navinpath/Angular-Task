@@ -1,106 +1,31 @@
-'use strict';
+// Karma configuration file, see link for more information
+// https://karma-runner.github.io/0.13/config/configuration-file.html
 
-var path = require('path');
-var conf = require('./gulp/conf');
-
-var _ = require('lodash');
-var wiredep = require('wiredep');
-
-var pathSrcHtml = [
-  path.join(conf.paths.src, '/**/*.html')
-];
-
-function listFiles() {
-  var wiredepOptions = _.extend({}, conf.wiredep, {
-    dependencies: true,
-    devDependencies: true
-  });
-
-  var patterns = wiredep(wiredepOptions).js
-    .concat([
-      path.join(conf.paths.tmp, '/serve/app/index.module.js'),
-    ])
-    .concat(pathSrcHtml);
-
-  var files = patterns.map(function(pattern) {
-    return {
-      pattern: pattern
-    };
-  });
-  files.push({
-    pattern: path.join(conf.paths.src, '/assets/**/*'),
-    included: false,
-    served: true,
-    watched: false
-  });
-  files.unshift('node_modules/babel-polyfill/dist/polyfill.js');
-  return files;
-}
-
-module.exports = function(config) {
-
-  var configuration = {
-    files: listFiles(),
-
-    singleRun: true,
-
-    autoWatch: false,
-
-    ngHtml2JsPreprocessor: {
-      stripPrefix: conf.paths.src + '/',
-      moduleName: 'mf.DashboardDataDisplaying'
-    },
-
-    logLevel: 'WARN',
-
-    frameworks: ['phantomjs-shim', 'jasmine'],
-
-    browsers : ['PhantomJS'],
-
-    plugins : [
-      'karma-phantomjs-launcher',
-      'karma-phantomjs-shim',
-      'karma-coverage',
-      'karma-jasmine',
-      'karma-ng-html2js-preprocessor'
+module.exports = function (config) {
+  config.set({
+    basePath: '',
+    frameworks: ['jasmine', '@angular-devkit/build-angular'],
+    plugins: [
+      require('karma-jasmine'),
+      require('karma-chrome-launcher'),
+      require('karma-jasmine-html-reporter'),
+      require('karma-coverage-istanbul-reporter'),
+      require('@angular-devkit/build-angular/plugins/karma')
     ],
-
-    coverageReporter: {
-      type : 'html',
-      dir : 'coverage/'
+    client:{
+      clearContext: false // leave Jasmine Spec Runner output visible in browser
     },
-
-    reporters: ['progress'],
-
-    proxies: {
-      '/assets/': path.join('/base/', conf.paths.src, '/assets/')
+    coverageIstanbulReporter: {
+      dir: require('path').join(__dirname, 'coverage'), reports: [ 'html', 'lcovonly' ],
+      fixWebpackSourcePaths: true
     },
-
-    failOnEmptyTestSuite: false
-  };
-
-  // This is the default preprocessors configuration for a usage with Karma cli
-  // The coverage preprocessor is added in gulp/unit-test.js only for single tests
-  // It was not possible to do it there because karma doesn't let us now if we are
-  // running a single test or not
-  configuration.preprocessors = {};
-  pathSrcHtml.forEach(function(path) {
-    configuration.preprocessors[path] = ['ng-html2js'];
+    
+    reporters: ['progress', 'kjhtml'],
+    port: 9876,
+    colors: true,
+    logLevel: config.LOG_INFO,
+    autoWatch: true,
+    browsers: ['Chrome'],
+    singleRun: false
   });
-
-  // This block is needed to execute Chrome on Travis
-  // If you ever plan to use Chrome and Travis, you can keep it
-  // If not, you can safely remove it
-  // https://github.com/karma-runner/karma/issues/1144#issuecomment-53633076
-  if(configuration.browsers[0] === 'Chrome' && process.env.TRAVIS) {
-    configuration.customLaunchers = {
-      'chrome-travis-ci': {
-        base: 'Chrome',
-        flags: ['--no-sandbox']
-      }
-    };
-    configuration.browsers = ['chrome-travis-ci'];
-  }
-
-  config.set(configuration);
 };
