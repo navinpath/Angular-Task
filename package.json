@@ -1,6 +1,9 @@
-{
-   "scripts": {},
-   "keywords": [
+{ "author": "navin.pathak@a1technology.com",
+	"name": "formio-test-app",
+	"version": "2.0.0-beta.10",
+	"description": "Angular Developer Pre-Interview Task.",
+	
+  "keywords": [
    "angular4",
    "angular8",
    "angular multiselect dropdown",
@@ -10,10 +13,7 @@
    "ng4 multiselect dropdown",
    "ng8 multiselect dropdown"
     ],
-   "repository": {
-   "type": "git",
-   "url": "https://github.com/navinpath/Angular-Task.git"
-   },
+
    "bugs": {
    "url": "https://github.com/navinpath/Angular-Task/issues"
    },
@@ -65,5 +65,17 @@
    "typescript": "3.5.3",
    "zone.js": "^0.10.2"
  
-  }
+  },
+
+  "scripts": {
+		"test": "echo \"Error: no test specified\" && exit 1"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/navinpath/Angular-Task.git"
+	},
+	"engines": {
+		"node": ">=0.10.10"
+	}
+
 }
