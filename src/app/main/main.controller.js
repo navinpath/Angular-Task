@@ -20,9 +20,9 @@ export default class MainController {
 		$scope.testing = true;
 		$scope.testmodel = [{ id: 1 }];
 		$scope.testdata = [
-			{ id: 1, label: 'David' },
-			{ id: 2, label: 'Jhon' },
-			{ id: 3, label: 'Danny' },
+			{ role_id: admins, role: 'Administrators', role_description: 'Can Manage Content and Users', created_date: '2020-02-19T23:54:28.130Z' },
+			{ role_id: authors, role: 'Authors', role_description: '', created_date: '2020-02-19T23:54:28.130Z' },
+			{ role_id: consumers, role: 'Consumers', role_description: 'Can Execute Reports and Dashboards', created_date: '2020-02-19T23:54:28.130Z' },
 		];
 		$scope.testsettings = {
 			selectionLimit: 1,
@@ -35,12 +35,6 @@ export default class MainController {
 			},
 		};
 
-		$scope.example1model = [];
-		$scope.example1data = [
-			{ role_id: admins, role: 'Administrators', role_description: 'Can Manage Content and Users', created_date: '2020-02-19T23:54:28.130Z' },
-			{ role_id: authors, role: 'Authors', role_description: '', created_date: '2020-02-19T23:54:28.130Z' },
-			{ role_id: consumers, role: 'Consumers', role_description: 'Can Execute Reports and Dashboards', created_date: '2020-02-19T23:54:28.130Z' },
-		];
 
 		$scope.smartButtonTextProviderSettings = {
 			smartButtonTextProvider(selectionArray) {
